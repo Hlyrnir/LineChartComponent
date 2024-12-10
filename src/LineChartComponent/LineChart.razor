@@ -1,0 +1,43 @@
+﻿@using Microsoft.JSInterop
+@using System.Text.Json;
+
+@implements IDisposable
+
+@inject IJSRuntime jsRuntime;
+
+<div class="line-chart">
+    <canvas id="@Id"></canvas>
+</div>
+
+@code {
+    private CancellationTokenSource tknSource = new CancellationTokenSource();
+
+    [Parameter]
+    public required string Id { get; init; }
+
+    [Parameter]
+    public required object Data { get; set; }
+
+    [Parameter]
+    public required object Option { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool bFirstRender)
+    {
+        await base.OnAfterRenderAsync(bFirstRender);
+
+        if (bFirstRender == false)
+        {
+            await jsRuntime.UpdateLineChartAsync(Id, Data, Option, tknSource.Token);
+        }
+        else
+        {
+            await jsRuntime.InitializeLineChartAsync(Id, Data, Option, tknSource.Token);
+        }
+    }
+
+    public void Dispose()
+    {
+        tknSource.Cancel();
+        tknSource.Dispose();
+    }
+}
