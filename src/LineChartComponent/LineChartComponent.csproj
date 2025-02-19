@@ -1,20 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-	<PackageId>LineChartComponent</PackageId>
-	  
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+	<AssemblyName>LineChartComponent</AssemblyName>
+	<TargetFramework>net8.0</TargetFramework>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+	<PackageId>$(AssemblyName)</PackageId>
+	<PackageVersion>0.1.0</PackageVersion>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageTags>Blazor Webassembly, Chart.js</PackageTags>
+	<Description>Component to add line charts to a Blazor WebAssembly.</Description>
+	<RepositoryUrl>https://github.com/Hlyrnir/LineChartComponent</RepositoryUrl>
+	<Authors>Hlyrnir</Authors>
+  </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser" />
+	<SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.10" />
+	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.10" />
   </ItemGroup>
 
 </Project>

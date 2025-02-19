@@ -1,3 +1,3 @@
 # LineChartComponent
 
-Blazor Component - under construction
+Component to add line charts to a Blazor WebAssembly.
